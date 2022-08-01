@@ -6,15 +6,15 @@
 #    By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/01 18:46:26 by lbarbosa          #+#    #+#              #
-#    Updated: 2022/08/01 19:23:12 by lbarbosa         ###   ########.fr        #
+#    Updated: 2022/08/01 19:42:35 by lbarbosa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = So_Long
+NAME = so_long
 
 CC = gcc
 
-CFLAGS = -g -fsanitize=address -o
+CFLAGS = -g -o
 
 HEADER = so_long.h
 
