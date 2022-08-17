@@ -6,36 +6,35 @@
 #    By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/01 18:46:26 by lbarbosa          #+#    #+#              #
-#    Updated: 2022/08/01 19:42:35 by lbarbosa         ###   ########.fr        #
+#    Updated: 2022/08/17 22:03:01 by lbarbosa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+$(VERBOSE).SILENT:
 
 NAME = so_long
 
 CC = gcc
 
-CFLAGS = -g -o
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address -o
 
-HEADER = so_long.h
+HEADERS = so_long.h GNL/get_next_line.h
 
-C_SRC = test.c
+C_SRC = test.c GNL/get_next_line.c GNL/get_next_line_utils.c validate_map.c
 
 SRC_OBJ = $(C_SRC:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(C_OBJ)
-	@cd ft_printf && make && cd ..
 	@cd mlx_linux && make && cd ..
-	@$(CC) $(CFLAGS) $(NAME) $(HEADER) $(C_SRC) ft_printf/libftprintf.a mlx_linux/libmlx.a -lXext -lX11 -lm -lz 
+	@$(CC) $(CFLAGS) $(NAME) $(HEADERS) $(C_SRC) mlx_linux/libmlx.a -lXext -lX11 -lm -lz 
 
 clean:
-	@cd ft_printf && make clean && cd ..
 	@cd mlx_linux && make clean && cd ..
 
 fclean: clean
 	@rm -rf $(NAME)
-	@cd ft_printf && make fclean && cd ..
 
 re: fclean all
 

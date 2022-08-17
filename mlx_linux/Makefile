@@ -9,7 +9,7 @@
 ##
 
 ## Please use configure script
-
+$(VERBOSE).SILENT:
 
 all	: do_configure
 

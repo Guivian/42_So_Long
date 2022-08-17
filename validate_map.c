@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putbase.c                                       :+:      :+:    :+:   */
+/*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/17 18:26:25 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/02/27 19:40:52 by lbarbosa         ###   ########.fr       */
+/*   Created: 2022/08/17 19:21:11 by lbarbosa          #+#    #+#             */
+/*   Updated: 2022/08/17 22:31:04 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "so_long.h"
 
-int	ft_putbase(long long int n, char *base)
+char	**new_map(int fd, char **map, int count)
 {
-	int	ret;
-
-	ret = 0;
-	if (n < 0)
+	char	*line;
+	
+	line = get_next_line(fd);
+	if (line)
+		new_map(fd, map, count + 1);
+	/*else
 	{
-		n *= -1;
-		write(1, "-", 1);
-		ret++;
-	}
-	if (n >= (long long int)ft_strlen(base))
-		ret += ft_putbase(n / ft_strlen(base), base);
-	ret += write(1, &base[n % ft_strlen(base)], 1);
-	return (ret);
+		map = malloc(sizeof(char *) * count + 1);
+		map[count] = line;
+	}*/
+	return (NULL);
 }
+	
