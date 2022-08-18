@@ -6,7 +6,7 @@
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 18:47:28 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/08/17 22:13:49 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/08/18 18:38:23 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_data {
 }	t_data;
 
 char	**new_map(int fd, char **map, int nline);
+char *creating_map(char *dest, char*src);
 
 #endif
 

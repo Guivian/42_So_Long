@@ -6,7 +6,7 @@
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 18:49:21 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/08/17 22:31:53 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/08/18 18:52:08 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,9 @@ int	main(void)
 	char	**map;
 
 	map = NULL;
-	fd = open("maps/mapa1", O_RDONLY);
-	map = new_map(fd, NULL, 0);
+	fd = open("maps/test", O_RDONLY);
+	map = new_map(fd, map, 0);
 	(void)map;
-//	printf("%s", map[0]);
 	vars.mlx = mlx_init();
 	vars.win = mlx_new_window(vars.mlx, 800, 600, "Hangry Girlfriend");
 	img.img = mlx_new_image(vars.mlx, 800, 600);

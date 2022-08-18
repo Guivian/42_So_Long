@@ -6,7 +6,7 @@
 #    By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/01 18:46:26 by lbarbosa          #+#    #+#              #
-#    Updated: 2022/08/17 22:03:01 by lbarbosa         ###   ########.fr        #
+#    Updated: 2022/08/18 18:36:14 by lbarbosa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address -o
 
 HEADERS = so_long.h GNL/get_next_line.h
 
-C_SRC = test.c GNL/get_next_line.c GNL/get_next_line_utils.c validate_map.c
+C_SRC = test.c GNL/get_next_line.c GNL/get_next_line_utils.c validate_map.c utils.c
 
 SRC_OBJ = $(C_SRC:.c=.o)
 

@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_map.c                                     :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/17 19:21:11 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/08/18 19:10:50 by lbarbosa         ###   ########.fr       */
+/*   Created: 2022/08/18 18:29:41 by lbarbosa          #+#    #+#             */
+/*   Updated: 2022/08/18 18:45:34 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char	**new_map(int fd, char **map, int count)
+char *creating_map(char *dest, char *src)
 {
-	char	*line;
-	
-	line = get_next_line(fd);
-	if (line)
-		new_map(fd, map, count + 1);
-	else
-	{
-		map = malloc(sizeof(char) * (count + 1));
-		if (map == NULL)
-			return (NULL);
-	}
-	if (line)
-		map[count] = creating_map(map[count], line);
-//	free(line);
-	return (map);
+	int x;
+
+	dest = malloc(sizeof(char) * (ft_strlen(src) + 1));
+	if (dest == NULL)
+		return (NULL);
+	x = -1;
+	while (src[++x])
+		dest[x] = src[x];
+	dest[x + 1] = 0;
+	return (dest);
 }
-	
