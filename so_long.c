@@ -1,29 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 18:49:21 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/08/18 18:52:08 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/08/19 21:46:08 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	other_dudes_mlx_pixel_put(t_data *data, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = data->addr + (y * data->ll + x * (data->bpp / 8));
-	*(unsigned int*)dst = color;
-}
-
-typedef struct	s_vars {
-	void	*mlx;
-	void	*win;
-}				t_vars;
 
 int	win_close(int keycode, t_vars *vars)
 {
@@ -41,17 +28,28 @@ int	win_esc_close(int keycode, t_vars *vars)
 	return (0);
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_data	img;
 	t_vars	vars;
+	t_map	map;
 	int		fd;
-	char	**map;
 
-	map = NULL;
-	fd = open("maps/test", O_RDONLY);
-	map = new_map(fd, map, 0);
-	(void)map;
+	if (argc != 2)
+	{
+		write(1, "Invalid number of Arguments\n", 29);
+		return (0);
+	}
+	map.map = NULL;
+	fd = open(argv[1], O_RDONLY);
+	if (fd == -1)
+	{
+		write(1, "ERROR\nFile does not exist / File is corrupted\n", 47);
+		return (0);
+	}
+	map.map = new_map(fd, map.map, 0);
+	if (validate_map(map.map) == 0)
+		write (1, "ERROR\nProblem in Map Validation\n", 33);
 	vars.mlx = mlx_init();
 	vars.win = mlx_new_window(vars.mlx, 800, 600, "Hangry Girlfriend");
 	img.img = mlx_new_image(vars.mlx, 800, 600);
@@ -61,4 +59,3 @@ int	main(void)
 	mlx_hook(vars.win, 17, 0, win_close, &vars);
 	mlx_loop(vars.mlx);
 }
-

@@ -6,10 +6,9 @@
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 18:47:28 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/08/18 18:38:23 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/08/19 21:02:14 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
@@ -27,7 +26,6 @@
 # include <stdbool.h>
 # include <fcntl.h>
 
-
 typedef struct s_data {
 	void	*img;
 	char	*addr;
@@ -36,8 +34,22 @@ typedef struct s_data {
 	int		endian;
 }	t_data;
 
+typedef struct s_vars{
+	void	*mlx;
+	void	*win;
+}				t_vars;
+
+typedef struct s_map{
+	char	**map;
+	int		map_size;
+}	t_map;
+
 char	**new_map(int fd, char **map, int nline);
-char *creating_map(char *dest, char*src);
+char	*creating_map(char*src);
+int		validate_map(char **map);
+int		validate_map_line(char *map_line, int strlen);
+int		validate_unique(char **map, int y);
+int		validate_map_surroundings(char **map, int x_len);
 
 #endif
 
@@ -49,4 +61,3 @@ D - 100
 Esc - 65307
 0, 1, p, e, c, x
 */
-
