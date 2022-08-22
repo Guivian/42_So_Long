@@ -6,7 +6,7 @@
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 19:21:11 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/08/19 21:31:01 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/08/22 19:17:02 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,24 @@ int	validate_map(char **map)
 
 	y = -1;
 	while (map[++y])
+	{
 		if (validate_map_line(map[y], ft_strlen(map[0])) == 0)
+		{
+			write (1, "ERROR\nProblem in Map Validation\n", 33);
 			return (0);
+		}
+	}
 	if (validate_map_surroundings(map, ft_strlen(map[0])) == 0)
+	{
+		write (1, "ERROR\nProblem in Map Validation\n", 33);
 		return (0);
+	}
 	y = -1;
 	if (validate_unique(map, y) == 0)
+	{
+		write (1, "ERROR\nProblem in Map Validation\n", 33);
 		return (0);
+	}
 	return (1);
 }
 

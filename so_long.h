@@ -6,12 +6,14 @@
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 18:47:28 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/08/22 15:54:24 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/08/22 19:49:03 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
+# define NAME "Hangry Girlfriend"
+# define BACKGROUND "./Images/Tiles1_64x64.xpm"
 # include "mlx_linux/mlx.h"
 # include "GNL/get_next_line.h"
 # include <stdio.h>
@@ -32,6 +34,8 @@ typedef struct s_data {
 	int		bpp;
 	int		ll;
 	int		endian;
+	int		width;
+	int		height;
 }	t_data;
 
 typedef struct s_vars{
@@ -45,7 +49,6 @@ typedef struct s_vars{
 
 typedef struct s_map{
 	char	**map;
-	int		map_size;
 }	t_map;
 
 char	**new_map(int fd, char **map, int nline);
@@ -55,6 +58,12 @@ int		validate_map_line(char *map_line, int strlen);
 int		validate_unique(char **map, int y);
 int		validate_map_surroundings(char **map, int x_len);
 void	put_background(t_vars *vars, t_data *img);
+int		win_esc_close(int keycode, t_vars *vars);
+int		win_close(int keycode, t_vars *vars);
+void	window_and_background(t_vars *vars, t_data *img, t_map *map);
+void	window_size(t_map *map, t_vars *vars);
+int		protections1(int argc, int fd);
+void	put_walls(t_vars *vars, t_data *img, t_map *map);
 
 #endif
 
