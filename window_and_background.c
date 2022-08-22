@@ -6,7 +6,7 @@
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 17:52:54 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/08/22 19:49:56 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/08/22 22:12:19 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	window_and_background(t_vars *vars, t_data *img, t_map *map)
 	vars->win = mlx_new_window(vars->mlx, vars->width, vars->height, NAME);
 	put_background(vars, img);
 	put_walls(vars, img, map);
+	put_collectables(vars, img, map);
+	put_exit(vars, img, map);
 	img->addr = mlx_get_data_addr(img->img, &img->bpp, &img->ll, &img->endian);
 	mlx_key_hook(vars->win, win_esc_close, &vars);
 	mlx_hook(vars->win, 17, 0, win_close, &vars);

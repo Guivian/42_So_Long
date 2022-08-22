@@ -6,7 +6,7 @@
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 18:47:28 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/08/22 19:49:03 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/08/22 22:11:56 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ void	window_and_background(t_vars *vars, t_data *img, t_map *map);
 void	window_size(t_map *map, t_vars *vars);
 int		protections1(int argc, int fd);
 void	put_walls(t_vars *vars, t_data *img, t_map *map);
+void	put_collectables(t_vars *vars, t_data *img, t_map *map);
+void	put_exit(t_vars *vars, t_data *img, t_map *map);
 
 #endif
 
