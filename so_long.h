@@ -6,7 +6,7 @@
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 18:47:28 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/08/19 21:02:14 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/08/22 15:54:24 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ typedef struct s_data {
 typedef struct s_vars{
 	void	*mlx;
 	void	*win;
+	int		height;
+	int		width;
+	int		x;
+	int		y;
 }				t_vars;
 
 typedef struct s_map{
@@ -50,6 +54,7 @@ int		validate_map(char **map);
 int		validate_map_line(char *map_line, int strlen);
 int		validate_unique(char **map, int y);
 int		validate_map_surroundings(char **map, int x_len);
+void	put_background(t_vars *vars, t_data *img);
 
 #endif
 

@@ -6,7 +6,7 @@
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 18:49:21 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/08/19 21:46:08 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/08/22 16:00:38 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,16 @@ int	main(int argc, char **argv)
 	}
 	map.map = new_map(fd, map.map, 0);
 	if (validate_map(map.map) == 0)
+	{
 		write (1, "ERROR\nProblem in Map Validation\n", 33);
+		return (0);
+	}
 	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 800, 600, "Hangry Girlfriend");
-	img.img = mlx_new_image(vars.mlx, 800, 600);
+	vars.height = 320;
+	vars.width = 832;
+	vars.win = mlx_new_window(vars.mlx, vars.width, vars.height, "Hangry Girlfriend");
+	put_background(&vars, &img);
 	img.addr = mlx_get_data_addr(img.img, &img.bpp, &img.ll, &img.endian);
-	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
 	mlx_key_hook(vars.win, win_esc_close, &vars);
 	mlx_hook(vars.win, 17, 0, win_close, &vars);
 	mlx_loop(vars.mlx);
