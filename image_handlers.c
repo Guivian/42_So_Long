@@ -6,7 +6,7 @@
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 15:46:35 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/08/23 13:28:39 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/08/23 18:25:52 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	put_background(t_vars *vars, t_data *img)
 	}
 }
 
-void	put_walls(t_vars *vars, t_data *img, t_map *map)
+void	put_walls(t_vars *vars, t_data *img)
 {
 	int	x;
 	int	y;
@@ -36,13 +36,13 @@ void	put_walls(t_vars *vars, t_data *img, t_map *map)
 	y = 0;
 	img->img = mlx_xpm_file_to_image(vars->mlx, "./Images/Walls.xpm", &img->width, &img-> height);
 	vars->y = -1;
-	while (map->map[++vars->y])
+	while (vars->map[++vars->y])
 	{
 		vars->x = -1;
 		x = 0;
-		while (map->map[vars->y][++vars->x])
+		while (vars->map[vars->y][++vars->x])
 		{
-			if (map->map[vars->y][vars->x] == '1')
+			if (vars->map[vars->y][vars->x] == '1')
 				mlx_put_image_to_window(vars->mlx, vars->win, img->img, x, y);
 			x = x + 64;
 		}
@@ -50,7 +50,7 @@ void	put_walls(t_vars *vars, t_data *img, t_map *map)
 	}
 }
 
-void	put_collectables(t_vars *vars, t_data *img, t_map *map)
+void	put_collectables(t_vars *vars, t_data *img)
 {
 	int	x;
 	int	y;
@@ -58,13 +58,13 @@ void	put_collectables(t_vars *vars, t_data *img, t_map *map)
 	y = 0;
 	img->img = mlx_xpm_file_to_image(vars->mlx, "./Images/Collectable.xpm", &img->width, &img-> height);
 	vars->y = -1;
-	while (map->map[++vars->y])
+	while (vars->map[++vars->y])
 	{
 		vars->x = -1;
 		x = 0;
-		while (map->map[vars->y][++vars->x])
+		while (vars->map[vars->y][++vars->x])
 		{
-			if (map->map[vars->y][vars->x] == 'C')
+			if (vars->map[vars->y][vars->x] == 'C')
 				mlx_put_image_to_window(vars->mlx, vars->win, img->img, x, y);
 			x = x + 64;
 		}
@@ -72,7 +72,7 @@ void	put_collectables(t_vars *vars, t_data *img, t_map *map)
 	}
 }
 
-void	put_exit(t_vars *vars, t_data *img, t_map *map)
+void	put_exit(t_vars *vars, t_data *img)
 {
 	int	x;
 	int	y;
@@ -80,13 +80,13 @@ void	put_exit(t_vars *vars, t_data *img, t_map *map)
 	y = 0;
 	img->img = mlx_xpm_file_to_image(vars->mlx, "./Images/Exit.xpm", &img->width, &img-> height);
 	vars->y = -1;
-	while (map->map[++vars->y])
+	while (vars->map[++vars->y])
 	{
 		vars->x = -1;
 		x = 0;
-		while (map->map[vars->y][++vars->x])
+		while (vars->map[vars->y][++vars->x])
 		{
-			if (map->map[vars->y][vars->x] == 'E')
+			if (vars->map[vars->y][vars->x] == 'E')
 				mlx_put_image_to_window(vars->mlx, vars->win, img->img, x, y);
 			x = x + 64;
 		}
@@ -94,7 +94,7 @@ void	put_exit(t_vars *vars, t_data *img, t_map *map)
 	}
 }
 
-void	put_player(t_vars *vars, t_data *img, t_map *map)
+void	put_player(t_vars *vars, t_data *img)
 {
 	int	x;
 	int	y;
@@ -102,13 +102,13 @@ void	put_player(t_vars *vars, t_data *img, t_map *map)
 	y = 0;
 	img->img = mlx_xpm_file_to_image(vars->mlx, "./Images/Player.xpm", &img->width, &img->height);
 	vars->y = -1;
-	while (map->map[++vars->y])
+	while (vars->map[++vars->y])
 	{
 		vars->x = -1;
 		x = 0;
-		while (map->map[vars->y][++vars->x])
+		while (vars->map[vars->y][++vars->x])
 		{
-			if (map->map[vars->y][vars->x] == 'P')
+			if (vars->map[vars->y][vars->x] == 'P')
 				mlx_put_image_to_window(vars->mlx, vars->win, img->img, x, y);
 			x = x + 64;
 		}

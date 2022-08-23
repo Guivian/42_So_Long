@@ -6,7 +6,7 @@
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 18:49:21 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/08/23 13:51:36 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/08/23 19:36:15 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,15 @@ int	main(int argc, char **argv)
 {
 	t_data	img;
 	t_vars	vars;
-	t_map	map;
 	int		fd;
 
-	map.map = NULL;
 	fd = open(argv[1], O_RDONLY);
 	if (protections(argc, fd) == 0)
 		return (0);
-	map.map = new_map(fd, map.map, 0);
-	if (validate_map(map.map) == 0)
+	vars.map = new_map(fd, vars.map, 0);
+	if (validate_map(vars.map) == 0)
 		return (0);
-	window_and_background(&vars, &img, &map);
+	window_management(&vars, &img);
 }
 
 int	protections(int argc, int fd)
