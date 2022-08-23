@@ -6,7 +6,7 @@
 #    By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/01 18:46:26 by lbarbosa          #+#    #+#              #
-#    Updated: 2022/08/22 19:21:03 by lbarbosa         ###   ########.fr        #
+#    Updated: 2022/08/23 13:59:06 by lbarbosa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ CFLAGS = -Wall -Wextra -Werror -g -o
 
 HEADERS = so_long.h GNL/get_next_line.h
 
-C_SRC = GNL/get_next_line.c GNL/get_next_line_utils.c so_long.c validate_map.c image_handlers.c window_and_background.c so_long_protections.c
+C_SRC = GNL/get_next_line.c GNL/get_next_line_utils.c so_long.c validate_map.c image_handlers.c window_and_background.c move_player.c
 
 SRC_OBJ = $(C_SRC:.c=.o)
 

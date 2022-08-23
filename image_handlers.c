@@ -6,7 +6,7 @@
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 15:46:35 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/08/22 22:11:36 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/08/23 13:28:39 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,28 @@ void	put_exit(t_vars *vars, t_data *img, t_map *map)
 		while (map->map[vars->y][++vars->x])
 		{
 			if (map->map[vars->y][vars->x] == 'E')
+				mlx_put_image_to_window(vars->mlx, vars->win, img->img, x, y);
+			x = x + 64;
+		}
+		y = y + 64;
+	}
+}
+
+void	put_player(t_vars *vars, t_data *img, t_map *map)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	img->img = mlx_xpm_file_to_image(vars->mlx, "./Images/Player.xpm", &img->width, &img->height);
+	vars->y = -1;
+	while (map->map[++vars->y])
+	{
+		vars->x = -1;
+		x = 0;
+		while (map->map[vars->y][++vars->x])
+		{
+			if (map->map[vars->y][vars->x] == 'P')
 				mlx_put_image_to_window(vars->mlx, vars->win, img->img, x, y);
 			x = x + 64;
 		}
