@@ -6,7 +6,7 @@
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 15:46:35 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/08/23 18:25:52 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/08/24 14:15:37 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,20 @@
 
 void	put_background(t_vars *vars, t_data *img)
 {
-	img->img = mlx_xpm_file_to_image(vars->mlx, BACKGROUND, &img->width, &img->height);
-	vars->y = 0;
-	while (vars->y < vars->height)
+	int	x;
+	int	y;
+
+	y = 0;
+	img->img = mlx_xpm_file_to_image(vars->mlx, BG, &img->width, &img->height);
+	while (y < vars->height)
 	{
-		vars->x = 0;
-		while (vars->x < vars->width)
+		x = 0;
+		while (x < vars->width)
 		{
-			mlx_put_image_to_window(vars->mlx, vars->win, img->img, vars->x, vars->y);
-			vars->x = vars->x + 64;
+			mlx_put_image_to_window(vars->mlx, vars->win, img->img, x, y);
+			x = x + 64;
 		}
-		vars->y = vars->y + 64;
+		y = y + 64;
 	}
 }
 
@@ -34,7 +37,7 @@ void	put_walls(t_vars *vars, t_data *img)
 	int	y;
 
 	y = 0;
-	img->img = mlx_xpm_file_to_image(vars->mlx, "./Images/Walls.xpm", &img->width, &img-> height);
+	img->img = mlx_xpm_file_to_image(vars->mlx, WL, &img->width, &img-> height);
 	vars->y = -1;
 	while (vars->map[++vars->y])
 	{
@@ -56,7 +59,7 @@ void	put_collectables(t_vars *vars, t_data *img)
 	int	y;
 
 	y = 0;
-	img->img = mlx_xpm_file_to_image(vars->mlx, "./Images/Collectable.xpm", &img->width, &img-> height);
+	img->img = mlx_xpm_file_to_image(vars->mlx, CL, &img->width, &img-> height);
 	vars->y = -1;
 	while (vars->map[++vars->y])
 	{
@@ -78,7 +81,7 @@ void	put_exit(t_vars *vars, t_data *img)
 	int	y;
 
 	y = 0;
-	img->img = mlx_xpm_file_to_image(vars->mlx, "./Images/Exit.xpm", &img->width, &img-> height);
+	img->img = mlx_xpm_file_to_image(vars->mlx, EX, &img->width, &img-> height);
 	vars->y = -1;
 	while (vars->map[++vars->y])
 	{
@@ -100,7 +103,7 @@ void	put_player(t_vars *vars, t_data *img)
 	int	y;
 
 	y = 0;
-	img->img = mlx_xpm_file_to_image(vars->mlx, "./Images/Player.xpm", &img->width, &img->height);
+	img->img = mlx_xpm_file_to_image(vars->mlx, P, &img->width, &img->height);
 	vars->y = -1;
 	while (vars->map[++vars->y])
 	{

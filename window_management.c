@@ -6,7 +6,7 @@
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 17:52:54 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/08/24 12:16:19 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/08/24 15:50:01 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,26 +34,29 @@ int	win_close(int keycode, t_vars *vars)
 
 int	key_handler(int keycode, t_vars *vars)
 {
+	vars->p_moves = 0;
 	if (keycode == 65307)
+	{
+		if (vars->p_moves > 0)
+			vars->p_moves = vars->p_moves - 1;
 		exit(0);
+	}
 	else if (keycode == 100)
 		move_right(vars);
+	vars->p_moves++;
 	return (0);
 }
 
 void	window_size(t_vars *vars)
 {
-	int	x;
-	int	y;
-
-	x = -1;
-	y = -1;
-	while (vars->map[++y])
+	vars->height = -1;
+	vars->width = -1;
+	while (vars->map[++vars->height])
 		;
-	while (vars->map[0][++x])
+	while (vars->map[0][++vars->width])
 		;
-	vars->height = y * 64;
-	vars->width = (x - 1) * 64;
+	vars->height = vars->height * 64;
+	vars->width = (vars->width - 1) * 64;
 }
 
 void	refresh_window(t_vars *vars, t_data *img)

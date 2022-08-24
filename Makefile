@@ -6,7 +6,7 @@
 #    By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/01 18:46:26 by lbarbosa          #+#    #+#              #
-#    Updated: 2022/08/23 19:29:58 by lbarbosa         ###   ########.fr        #
+#    Updated: 2022/08/24 15:58:33 by lbarbosa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,6 @@ fclean: clean
 re: fclean all
 
 x: re clean
-	@./so_long maps/mapa1.ber
+	@./so_long maps/map_valid1.ber
 
 .PHONY: all clean fclean re
