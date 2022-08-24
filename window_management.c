@@ -6,7 +6,7 @@
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 17:52:54 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/08/23 21:51:53 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/08/24 12:16:19 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ void	window_management(t_vars *vars, t_data *img)
 	vars->win = mlx_new_window(vars->mlx, vars->width, vars->height, NAME);
 	refresh_window(vars, img);
 	mlx_key_hook(vars->win, key_handler, &vars);
-	move_right(vars);
-	move_right(vars);
 	refresh_window(vars, img);
 	mlx_hook(vars->win, 17, 0, win_close, &vars);
 	mlx_loop(vars->mlx);
