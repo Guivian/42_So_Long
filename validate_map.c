@@ -6,7 +6,7 @@
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 19:21:11 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/08/22 19:17:02 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/08/25 13:54:25 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ char	**new_map(int fd, char **map, int count)
 		map = malloc(sizeof(char *) * (count + 1));
 		if (map == NULL)
 			return (NULL);
+		map[count * 1] = '\0';
 		return (map);
 	}
 	if (line)
