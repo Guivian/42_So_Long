@@ -6,7 +6,7 @@
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 18:49:21 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/08/24 14:07:03 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/08/25 17:46:07 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(int argc, char **argv)
 	if (protections(argc, fd, argv) == 0)
 		return (0);
 	vars.map = new_map(fd, vars.map, 0);
+	close(fd);
 	if (validate_map(vars.map) == 0)
 		return (0);
 	window_management(&vars, &img);
