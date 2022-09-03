@@ -6,7 +6,7 @@
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 09:37:02 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/09/03 15:57:37 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/09/03 17:19:23 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,12 @@ void	copy_map(t_vars *vars)
 {
 	vars->y = -1;
 	vars->x = -1;
+
 	while (vars->map[++vars->y])
 		;
 	while (vars->map[0][++vars->x])
 		;
-	vars->valid_path = malloc(sizeof(char *) * vars->y);
+	vars->valid_path = malloc(sizeof(char *) * (vars->y));
 	vars->y = -1;
 	while (vars->map[++vars->y])
 		vars->valid_path[vars->y] = ft_strdup(vars->map[vars->y]);

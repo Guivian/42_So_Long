@@ -6,7 +6,7 @@
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 17:52:54 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/09/03 14:22:48 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/09/03 17:13:20 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,14 @@ int	key_handler(int keycode, t_vars *vars)
 	char	*str;
 
 	if (keycode == 65307)
-	{
 		exit(0);
-	}
-	else if (keycode == 100)
+	else if (keycode == 100 || keycode == 65363)
 		move_right(vars);
-	else if (keycode == 115)
+	else if (keycode == 115 || keycode == 65364)
 		move_down(vars);
-	else if (keycode == 97)
+	else if (keycode == 97 || keycode == 65361)
 		move_left(vars);
-	else if (keycode == 119)
+	else if (keycode == 119 || keycode == 65362)
 		move_up(vars);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->data->walls, 0, 0);
 	str = ft_itoa(vars->p_moves);
