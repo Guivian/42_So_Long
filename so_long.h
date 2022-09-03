@@ -6,7 +6,7 @@
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 18:47:28 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/09/02 16:00:43 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/09/03 14:57:33 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,6 @@ int		path(t_vars *vars);
 char	*ft_strcpy(char *dest, char *src);
 char	*ft_strdup(char *s1);
 void	copy_map(t_vars *vars);
-void	copy_map(t_vars *vars);
+void	free_map(char **map);
 
 #endif

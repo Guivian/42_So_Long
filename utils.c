@@ -6,7 +6,7 @@
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 13:44:09 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/09/02 16:00:32 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/09/03 15:57:20 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ char	*ft_strdup(char *s1)
 	int		i;
 
 	i = ft_strlen(s1);
-	s2 = malloc(sizeof(char) * i + 1);
+	s2 = malloc(sizeof(char) * (i + 1));
 	if (s2 == NULL)
 		return (NULL);
 	ft_strcpy(s2, s1);

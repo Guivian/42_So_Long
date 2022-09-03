@@ -6,7 +6,7 @@
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 18:49:21 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/09/02 15:44:50 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/09/03 15:48:12 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	main(int argc, char **argv)
 	if (validate_map(&vars) == 0)
 	{
 		write (1, "ERROR\nProblem in Map Validation\n", 33);
+		free_map(vars.map);
 		return (0);
 	}
 	window_management(&vars);
@@ -52,25 +53,34 @@ int	protections(int argc, int fd, char **argv)
 	return (1);
 }
 
-void	free_so_long(t_vars *vars)
+void	free_map(char **map)
 {
-	free(vars->map);
-	mlx_destroy_image(vars->mlx, vars->data->bg);
-	mlx_destroy_image(vars->mlx, vars->data->e_0);
-	mlx_destroy_image(vars->mlx, vars->data->e_1);
-	mlx_destroy_image(vars->mlx, vars->data->e_2);
-	mlx_destroy_image(vars->mlx, vars->data->e_3);
-	mlx_destroy_image(vars->mlx, vars->data->e_4);
-	mlx_destroy_image(vars->mlx, vars->data->e_5);
-	mlx_destroy_image(vars->mlx, vars->data->e_6);
-	mlx_destroy_image(vars->mlx, vars->data->e_c);
-	mlx_destroy_image(vars->mlx, vars->data->exit);
-	mlx_destroy_image(vars->mlx, vars->data->food);
-	mlx_destroy_image(vars->mlx, vars->data->walls);
-	mlx_destroy_image(vars->mlx, vars->data->p_a);
-	mlx_destroy_image(vars->mlx, vars->data->p_d);
-	mlx_destroy_image(vars->mlx, vars->data->p_s);
-	mlx_destroy_image(vars->mlx, vars->data->p_w);
-	mlx_destroy_display(vars->mlx);
-	free(vars->mlx);
+	int	y;
+
+	y = -1;
+	while (map[++y])
+		free(map[y]);
+	free(map);
 }
+// void	free_so_long(t_vars *vars)
+// {
+// 	free(vars->map);
+// 	mlx_destroy_image(vars->mlx, vars->data->bg);
+// 	mlx_destroy_image(vars->mlx, vars->data->e_0);
+// 	mlx_destroy_image(vars->mlx, vars->data->e_1);
+// 	mlx_destroy_image(vars->mlx, vars->data->e_2);
+// 	mlx_destroy_image(vars->mlx, vars->data->e_3);
+// 	mlx_destroy_image(vars->mlx, vars->data->e_4);
+// 	mlx_destroy_image(vars->mlx, vars->data->e_5);
+// 	mlx_destroy_image(vars->mlx, vars->data->e_6);
+// 	mlx_destroy_image(vars->mlx, vars->data->e_c);
+// 	mlx_destroy_image(vars->mlx, vars->data->exit);
+// 	mlx_destroy_image(vars->mlx, vars->data->food);
+// 	mlx_destroy_image(vars->mlx, vars->data->walls);
+// 	mlx_destroy_image(vars->mlx, vars->data->p_a);
+// 	mlx_destroy_image(vars->mlx, vars->data->p_d);
+// 	mlx_destroy_image(vars->mlx, vars->data->p_s);
+// 	mlx_destroy_image(vars->mlx, vars->data->p_w);
+// 	mlx_destroy_display(vars->mlx);
+// 	free(vars->mlx);
+// }

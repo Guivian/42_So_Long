@@ -6,7 +6,7 @@
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 17:52:54 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/09/03 13:44:39 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/09/03 14:22:48 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int	win_close(int keycode, t_vars *vars)
 {
 	(void)keycode;
 	(void)vars;
-//	free_so_long(vars);
 	exit(0);
 	return (0);
 }
@@ -41,7 +40,6 @@ int	key_handler(int keycode, t_vars *vars)
 
 	if (keycode == 65307)
 	{
-		//free_so_long(vars);
 		exit(0);
 	}
 	else if (keycode == 100)

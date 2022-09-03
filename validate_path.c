@@ -6,7 +6,7 @@
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 09:37:02 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/09/03 13:56:15 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/09/03 15:57:37 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,6 @@ void	copy_map(t_vars *vars)
 	while (vars->map[0][++vars->x])
 		;
 	vars->valid_path = malloc(sizeof(char *) * vars->y);
-	vars->y = -1;
-	while (vars->map[++vars->y])
-		vars->valid_path[vars->y] = malloc(sizeof(char) * vars->x);
 	vars->y = -1;
 	while (vars->map[++vars->y])
 		vars->valid_path[vars->y] = ft_strdup(vars->map[vars->y]);
@@ -85,13 +82,15 @@ int	path(t_vars *vars)
 	copy_map(vars);
 	locate_player(vars);
 	prepare_path_validation(vars, vars->y, vars->x);
-
 	while (++y < (vars->height / 64))
 	{
 		x = -1;
 		while (vars->valid_path[y][++x])
 			if (validate_path(vars, y, x) == 0)
+			{
+				free(vars->valid_path);
 				return (0);
+			}
 	}
 	return (1);
 }
