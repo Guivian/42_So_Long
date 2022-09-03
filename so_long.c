@@ -6,7 +6,7 @@
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 18:49:21 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/08/25 17:46:07 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/09/02 15:44:50 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,18 @@ int	main(int argc, char **argv)
 	t_vars	vars;
 	int		fd;
 
+	vars.data = &img;
 	fd = open(argv[1], O_RDONLY);
 	if (protections(argc, fd, argv) == 0)
 		return (0);
 	vars.map = new_map(fd, vars.map, 0);
 	close(fd);
-	if (validate_map(vars.map) == 0)
+	if (validate_map(&vars) == 0)
+	{
+		write (1, "ERROR\nProblem in Map Validation\n", 33);
 		return (0);
-	window_management(&vars, &img);
+	}
+	window_management(&vars);
 }
 
 int	protections(int argc, int fd, char **argv)
@@ -48,39 +52,25 @@ int	protections(int argc, int fd, char **argv)
 	return (1);
 }
 
-int	ft_strncmp(const char	*s1, const char	*s2, size_t n)
+void	free_so_long(t_vars *vars)
 {
-	unsigned int	i;
-
-	i = 0;
-	if (s1 == NULL || s2 == NULL)
-		return (1);
-	while (s1[i] == s2[i] && i < n - 1)
-	{
-		if (s1[i] == 0 || s2[i] == 0)
-			break ;
-		i++;
-	}
-	if (n == 0)
-		return (0);
-	else
-		return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-}
-
-char	*ft_strrchr(const char *s, int c)
-{
-	int		i;
-	char	*ptr;
-
-	i = 0;
-	ptr = (char *)s;
-	while (ptr[i])
-		i++;
-	while (i >= 0)
-	{
-		if (ptr[i] == (unsigned char)c)
-			return (&ptr[i]);
-		i--;
-	}
-	return (NULL);
+	free(vars->map);
+	mlx_destroy_image(vars->mlx, vars->data->bg);
+	mlx_destroy_image(vars->mlx, vars->data->e_0);
+	mlx_destroy_image(vars->mlx, vars->data->e_1);
+	mlx_destroy_image(vars->mlx, vars->data->e_2);
+	mlx_destroy_image(vars->mlx, vars->data->e_3);
+	mlx_destroy_image(vars->mlx, vars->data->e_4);
+	mlx_destroy_image(vars->mlx, vars->data->e_5);
+	mlx_destroy_image(vars->mlx, vars->data->e_6);
+	mlx_destroy_image(vars->mlx, vars->data->e_c);
+	mlx_destroy_image(vars->mlx, vars->data->exit);
+	mlx_destroy_image(vars->mlx, vars->data->food);
+	mlx_destroy_image(vars->mlx, vars->data->walls);
+	mlx_destroy_image(vars->mlx, vars->data->p_a);
+	mlx_destroy_image(vars->mlx, vars->data->p_d);
+	mlx_destroy_image(vars->mlx, vars->data->p_s);
+	mlx_destroy_image(vars->mlx, vars->data->p_w);
+	mlx_destroy_display(vars->mlx);
+	free(vars->mlx);
 }

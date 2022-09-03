@@ -6,7 +6,7 @@
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 19:21:11 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/08/25 13:54:25 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/09/03 13:51:10 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	**new_map(int fd, char **map, int count)
 		map = malloc(sizeof(char *) * (count + 1));
 		if (map == NULL)
 			return (NULL);
-		map[count * 1] = '\0';
+		map[count] = '\0';
 		return (map);
 	}
 	if (line)
@@ -32,30 +32,24 @@ char	**new_map(int fd, char **map, int count)
 	return (map);
 }
 
-int	validate_map(char **map)
+int	validate_map(t_vars *vars)
 {
 	int	y;
 
 	y = -1;
-	while (map[++y])
+	while (vars->map[++y])
 	{
-		if (validate_map_line(map[y], ft_strlen(map[0])) == 0)
-		{
-			write (1, "ERROR\nProblem in Map Validation\n", 33);
+		if (validate_map_line(vars->map[y], ft_strlen(vars->map[0])) == 0)
 			return (0);
-		}
 	}
-	if (validate_map_surroundings(map, ft_strlen(map[0])) == 0)
-	{
-		write (1, "ERROR\nProblem in Map Validation\n", 33);
+	if (validate_map_surroundings(vars->map, ft_strlen(vars->map[0])) == 0)
 		return (0);
-	}
 	y = -1;
-	if (validate_unique(map, y) == 0)
-	{
-		write (1, "ERROR\nProblem in Map Validation\n", 33);
+	if (validate_unique(vars->map, y) == 0)
 		return (0);
-	}
+	window_size(vars);
+	if (path(vars) == 0)
+		return (0);
 	return (1);
 }
 

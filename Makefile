@@ -6,7 +6,7 @@
 #    By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/01 18:46:26 by lbarbosa          #+#    #+#              #
-#    Updated: 2022/08/29 17:33:06 by lbarbosa         ###   ########.fr        #
+#    Updated: 2022/09/02 14:25:40 by lbarbosa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address -o
 
 HEADERS = so_long.h GNL/get_next_line.h
 
-C_SRC = GNL/get_next_line.c GNL/get_next_line_utils.c so_long.c validate_map.c image_handlers.c window_management.c move_player.c
+C_SRC = GNL/get_next_line.c GNL/get_next_line_utils.c so_long.c validate_map.c image_handlers.c window_management.c move_player.c utils.c enemy.c ft_itoa.c validate_path.c
 
 SRC_OBJ = $(C_SRC:.c=.o)
 
@@ -32,7 +32,6 @@ $(NAME): $(C_OBJ)
 
 clean:
 	@cd GNL && rm -rf *.o && cd ..
-	@cd mlx_linux && make clean && cd ..
 
 fclean: clean
 	@rm -rf $(NAME)

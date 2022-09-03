@@ -6,22 +6,23 @@
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 17:52:54 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/08/29 17:42:35 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/09/03 13:44:39 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	window_management(t_vars *vars, t_data *img)
+void	window_management(t_vars *vars)
 {
 	vars->mlx = mlx_init();
-	window_size(vars);
 	vars->win = mlx_new_window(vars->mlx, vars->width, vars->height, NAME);
-	refresh_window(vars, img);
-	// mlx_key_hook(vars->win, &key_handler, &vars);
-	mlx_hook(vars->win, 2, (1L << 0), &key_handler, &vars);
-	refresh_window(vars, img);
-	mlx_hook(vars->win, 17, 0, &win_close, &vars);
+	refresh_window(vars);
+	vars->p_moves = 0;
+	vars->frames = 0;
+	vars->t_collectable = total_collectables(vars);
+	mlx_loop_hook(vars->mlx, animation, vars);
+	mlx_hook(vars->win, 2, (1L << 0), &key_handler, vars);
+	mlx_hook(vars->win, 17, 0, &win_close, vars);
 	mlx_loop(vars->mlx);
 }
 
@@ -29,22 +30,32 @@ int	win_close(int keycode, t_vars *vars)
 {
 	(void)keycode;
 	(void)vars;
+//	free_so_long(vars);
 	exit(0);
 	return (0);
 }
 
 int	key_handler(int keycode, t_vars *vars)
 {
-	vars->p_moves = 0;
+	char	*str;
+
 	if (keycode == 65307)
 	{
-		if (vars->p_moves > 0)
-			vars->p_moves = vars->p_moves - 1;
+		//free_so_long(vars);
 		exit(0);
 	}
 	else if (keycode == 100)
 		move_right(vars);
-	vars->p_moves++;
+	else if (keycode == 115)
+		move_down(vars);
+	else if (keycode == 97)
+		move_left(vars);
+	else if (keycode == 119)
+		move_up(vars);
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->data->walls, 0, 0);
+	str = ft_itoa(vars->p_moves);
+	mlx_string_put(vars->mlx, vars->win, 32, 32, 1, str);
+	free(str);
 	return (0);
 }
 
@@ -60,11 +71,15 @@ void	window_size(t_vars *vars)
 	vars->width = (vars->width - 1) * 64;
 }
 
-void	refresh_window(t_vars *vars, t_data *img)
+int	refresh_window(t_vars *vars)
 {
-	put_background(vars, img);
-	put_walls(vars, img);
-	put_collectables(vars, img);
-	put_exit(vars, img);
-	put_player(vars, img);
+	mlx_clear_window(vars->mlx, vars->win);
+	put_background(vars, vars->data);
+	put_walls(vars, vars->data);
+	put_collectables(vars, vars->data);
+	put_exit(vars, vars->data);
+	put_player(vars, vars->data);
+	open_enemy(vars, vars->data);
+	put_enemy(vars, vars->data);
+	return (1);
 }
