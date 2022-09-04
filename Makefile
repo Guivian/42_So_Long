@@ -6,7 +6,7 @@
 #    By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/01 18:46:26 by lbarbosa          #+#    #+#              #
-#    Updated: 2022/09/04 15:20:08 by lbarbosa         ###   ########.fr        #
+#    Updated: 2022/09/04 15:43:35 by lbarbosa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME = so_long
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address -o
+CFLAGS = -Wall -Wextra -Werror -g -o
 
 HEADERS = so_long.h GNL/get_next_line.h
 
