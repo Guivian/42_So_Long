@@ -6,7 +6,7 @@
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 18:49:21 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/09/03 17:07:04 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/09/04 15:23:24 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,29 +57,47 @@ void	free_map(char **map)
 {
 	int	y;
 
-	y = -1;
-	while (map[++y])
-		free(map[y]);
-	free(map);
+	if (map)
+	{
+		y = -1;
+		while (map[++y])
+			free(map[y]);
+		free(map);
+	}
 }
 
-void	free_so_long(t_vars *vars)
+/*void	free_so_long(t_vars *vars)
 {
-	mlx_destroy_image(vars->mlx, vars->data->bg);
-	mlx_destroy_image(vars->mlx, vars->data->e_0);
-	mlx_destroy_image(vars->mlx, vars->data->e_1);
-	mlx_destroy_image(vars->mlx, vars->data->e_2);
-	mlx_destroy_image(vars->mlx, vars->data->e_3);
-	mlx_destroy_image(vars->mlx, vars->data->e_4);
-	mlx_destroy_image(vars->mlx, vars->data->e_5);
-	mlx_destroy_image(vars->mlx, vars->data->e_6);
-	mlx_destroy_image(vars->mlx, vars->data->e_c);
-	mlx_destroy_image(vars->mlx, vars->data->exit);
-	mlx_destroy_image(vars->mlx, vars->data->food);
-	mlx_destroy_image(vars->mlx, vars->data->walls);
-	mlx_destroy_image(vars->mlx, vars->data->p_a);
-	mlx_destroy_image(vars->mlx, vars->data->p_d);
-	mlx_destroy_image(vars->mlx, vars->data->p_s);
-	mlx_destroy_image(vars->mlx, vars->data->p_w);
-	mlx_destroy_window(vars->mlx, vars->win);
+	check_if_image_exist(vars->mlx, vars->data->bg);
+	check_if_image_exist(vars->mlx, vars->data->walls);
+	check_if_image_exist(vars->mlx, vars->data->food);
+	check_if_image_exist(vars->mlx, vars->data->exit);
+	check_if_image_exist(vars->mlx, vars->data->p_a);
+	check_if_image_exist(vars->mlx, vars->data->p_d);
+	check_if_image_exist(vars->mlx, vars->data->p_s);
+	check_if_image_exist(vars->mlx, vars->data->p_w);
+	check_if_image_exist(vars->mlx, vars->data->e_c);
+	check_if_image_exist(vars->mlx, vars->data->e_0);
+	check_if_image_exist(vars->mlx, vars->data->e_1);
+	check_if_image_exist(vars->mlx, vars->data->e_2);
+	check_if_image_exist(vars->mlx, vars->data->e_3);
+	check_if_image_exist(vars->mlx, vars->data->e_4);
+	check_if_image_exist(vars->mlx, vars->data->e_5);
+	check_if_image_exist(vars->mlx, vars->data->e_6);
+	if (vars->win)
+		mlx_destroy_window(vars->mlx, vars->win);
+	if (vars->mlx)
+	{
+		mlx_destroy_display(vars->mlx);
+		free(vars->mlx);
+	}
 }
+
+void	check_if_image_exist(void	*mlx, void *img)
+{
+	if (img)
+	{
+		mlx_destroy_image(mlx, img);
+		free(img);
+	}
+}*/

@@ -6,7 +6,7 @@
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 09:37:02 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/09/03 17:19:23 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/09/04 14:38:07 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,25 @@
 
 void	copy_map(t_vars *vars)
 {
-	vars->y = -1;
-	vars->x = -1;
+	int	i;
 
-	while (vars->map[++vars->y])
-		;
-	while (vars->map[0][++vars->x])
-		;
-	vars->valid_path = malloc(sizeof(char *) * (vars->y));
+	i = -1;
 	vars->y = -1;
 	while (vars->map[++vars->y])
-		vars->valid_path[vars->y] = ft_strdup(vars->map[vars->y]);
+		;
+	vars->valid_path = malloc(sizeof(char *) * (vars->y + 1));
+	if (!vars->valid_path)
+		exit(0);
+	while (++i < vars->y)
+	{
+		vars->valid_path[i] = ft_strdup(vars->map[i]);
+		if (!vars->valid_path[i])
+		{
+			free_map(vars->valid_path);
+			exit(0);
+		}
+	}
+	vars->valid_path[i] = NULL;
 }
 
 void	locate_player(t_vars *vars)
@@ -87,11 +95,14 @@ int	path(t_vars *vars)
 	{
 		x = -1;
 		while (vars->valid_path[y][++x])
+		{
 			if (validate_path(vars, y, x) == 0)
 			{
-				free(vars->valid_path);
+				free_map(vars->valid_path);
 				return (0);
 			}
+		}
 	}
+	free_map(vars->valid_path);
 	return (1);
 }
