@@ -6,7 +6,7 @@
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 13:34:33 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/09/04 15:43:39 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/09/05 20:56:53 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,12 +141,14 @@ int	check_tile(t_vars *vars, int x, int y)
 			return (0);
 		else
 		{
+			free_so_long(vars);
 			write(1, "You Won! :D\n", 13);
 			exit (0);
 		}
 	}
 	else if (vars->map[y][x] == 'X')
 	{
+		free_so_long(vars);
 		write(1, "You Lost!? O.O\n", 16);
 		exit (0);
 	}

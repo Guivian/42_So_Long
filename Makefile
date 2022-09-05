@@ -6,7 +6,7 @@
 #    By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/01 18:46:26 by lbarbosa          #+#    #+#              #
-#    Updated: 2022/09/04 15:43:35 by lbarbosa         ###   ########.fr        #
+#    Updated: 2022/09/05 21:12:02 by lbarbosa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,6 @@ fclean: clean
 re: fclean all
 
 x: re clean
-	@./so_long maps/map_valid1.ber
+	@valgrind --leak-check=full --show-leak-kinds=all ./so_long maps/map_valid1.ber 
 
 .PHONY: all clean fclean re

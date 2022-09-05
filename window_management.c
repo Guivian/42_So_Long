@@ -6,7 +6,7 @@
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 17:52:54 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/09/04 15:43:50 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/09/05 21:43:49 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	window_management(t_vars *vars)
 	vars->p_moves = 0;
 	vars->frames = 0;
 	vars->t_collectable = total_collectables(vars);
-	mlx_loop_hook(vars->mlx, animation, vars);
+	//mlx_loop_hook(vars->mlx, animation, vars);
 	mlx_hook(vars->win, 2, (1L << 0), &key_handler, vars);
 	mlx_hook(vars->win, 17, 0, &win_close, vars);
 	mlx_loop(vars->mlx);
@@ -30,8 +30,10 @@ int	win_close(int keycode, t_vars *vars)
 {
 	(void)keycode;
 	(void)vars;
-	exit(0);
-	return (0);
+	free(vars->map);
+	mlx_destroy_window(vars->mlx, vars->win);
+	//free_so_long(vars);
+	exit (0);
 }
 
 int	key_handler(int keycode, t_vars *vars)
@@ -39,7 +41,10 @@ int	key_handler(int keycode, t_vars *vars)
 	char	*str;
 
 	if (keycode == 65307)
+	{
+		free_so_long(vars);
 		exit(0);
+	}
 	else if (keycode == 100 || keycode == 65363)
 		move_right(vars);
 	else if (keycode == 115 || keycode == 65364)

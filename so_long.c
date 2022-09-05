@@ -6,7 +6,7 @@
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 18:49:21 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/09/04 15:51:06 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/09/05 21:36:29 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,31 @@ void	free_map(char **map)
 			free(map[y]);
 		free(map);
 	}
+}
+
+void	free_so_long(t_vars *vars)
+{
+	if (vars->win)
+		mlx_destroy_window(vars->mlx, vars->win);
+	free_map(vars->map);
+	mlx_destroy_image(vars->mlx, vars->data->walls);
+	mlx_destroy_image(vars->mlx, vars->data->bg);
+	mlx_destroy_image(vars->mlx, vars->data->food);
+	mlx_destroy_image(vars->mlx, vars->data->exit);
+	mlx_destroy_image(vars->mlx, vars->data->p_a);
+	mlx_destroy_image(vars->mlx, vars->data->p_d);
+	mlx_destroy_image(vars->mlx, vars->data->p_s);
+	mlx_destroy_image(vars->mlx, vars->data->p_w);
+	mlx_destroy_image(vars->mlx, vars->data->e_0);
+	mlx_destroy_image(vars->mlx, vars->data->e_1);
+	mlx_destroy_image(vars->mlx, vars->data->e_2);
+	mlx_destroy_image(vars->mlx, vars->data->e_3);
+	mlx_destroy_image(vars->mlx, vars->data->e_4);
+	mlx_destroy_image(vars->mlx, vars->data->e_5);
+	mlx_destroy_image(vars->mlx, vars->data->e_6);
+	mlx_destroy_image(vars->mlx, vars->data->e_c);
+	if (vars->mlx)
+		mlx_destroy_display(vars->mlx);
+	//free(vars->win);
+	free(vars->mlx);
 }
