@@ -6,7 +6,7 @@
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 17:52:54 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/09/05 21:43:49 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/09/06 17:08:06 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,17 @@ void	window_management(t_vars *vars)
 	vars->t_collectable = total_collectables(vars);
 	//mlx_loop_hook(vars->mlx, animation, vars);
 	mlx_hook(vars->win, 2, (1L << 0), &key_handler, vars);
-	mlx_hook(vars->win, 17, 0, &win_close, vars);
+	mlx_hook(vars->win, 17, (1L << 2), &win_close, vars);
 	mlx_loop(vars->mlx);
 }
 
-int	win_close(int keycode, t_vars *vars)
+int	win_close(t_vars *vars)
 {
-	(void)keycode;
-	(void)vars;
-	free(vars->map);
-	mlx_destroy_window(vars->mlx, vars->win);
-	//free_so_long(vars);
+	printf("%s", vars->map[0]);
+	free_so_long(vars);
+	write(1, "See ya\n", 8);
 	exit (0);
+	return (0);
 }
 
 int	key_handler(int keycode, t_vars *vars)

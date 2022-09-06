@@ -6,7 +6,7 @@
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 18:49:21 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/09/05 21:36:29 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/09/06 16:22:41 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,7 @@ void	free_map(char **map)
 
 void	free_so_long(t_vars *vars)
 {
-	if (vars->win)
-		mlx_destroy_window(vars->mlx, vars->win);
+	mlx_destroy_window(vars->mlx, vars->win);
 	free_map(vars->map);
 	mlx_destroy_image(vars->mlx, vars->data->walls);
 	mlx_destroy_image(vars->mlx, vars->data->bg);
@@ -89,6 +88,5 @@ void	free_so_long(t_vars *vars)
 	mlx_destroy_image(vars->mlx, vars->data->e_c);
 	if (vars->mlx)
 		mlx_destroy_display(vars->mlx);
-	//free(vars->win);
 	free(vars->mlx);
 }

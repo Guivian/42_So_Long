@@ -6,7 +6,7 @@
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 18:47:28 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/09/04 15:43:09 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/09/06 17:06:00 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int		validate_unique(char **map, int y);
 int		validate_map_surroundings(char **map, int x_len);
 void	put_background(t_vars *vars, t_data *img);
 int		key_handler(int keycode, t_vars *vars);
-int		win_close(int keycode, t_vars *vars);
+int		win_close(t_vars *vars);
 void	window_management(t_vars *vars);
 void	window_size(t_vars *vars);
 int		protections(int argc, int fd, char **argv);
