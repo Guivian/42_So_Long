@@ -6,7 +6,7 @@
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 17:52:54 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/09/06 17:08:06 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/09/06 17:35:41 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	window_management(t_vars *vars)
 	vars->p_moves = 0;
 	vars->frames = 0;
 	vars->t_collectable = total_collectables(vars);
-	//mlx_loop_hook(vars->mlx, animation, vars);
 	mlx_hook(vars->win, 2, (1L << 0), &key_handler, vars);
 	mlx_hook(vars->win, 17, (1L << 2), &win_close, vars);
 	mlx_loop(vars->mlx);
@@ -28,7 +27,6 @@ void	window_management(t_vars *vars)
 
 int	win_close(t_vars *vars)
 {
-	printf("%s", vars->map[0]);
 	free_so_long(vars);
 	write(1, "See ya\n", 8);
 	exit (0);
@@ -41,6 +39,7 @@ int	key_handler(int keycode, t_vars *vars)
 
 	if (keycode == 65307)
 	{
+		write(1, "See ya\n", 8);
 		free_so_long(vars);
 		exit(0);
 	}
@@ -79,7 +78,6 @@ int	refresh_window(t_vars *vars)
 	put_collectables(vars, vars->data);
 	put_exit(vars, vars->data);
 	put_player(vars, vars->data);
-	open_enemy(vars, vars->data);
 	put_enemy(vars, vars->data);
 	return (1);
 }

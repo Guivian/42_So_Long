@@ -6,7 +6,7 @@
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 18:49:21 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/09/06 16:22:41 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/09/06 17:35:35 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,13 +79,6 @@ void	free_so_long(t_vars *vars)
 	mlx_destroy_image(vars->mlx, vars->data->p_s);
 	mlx_destroy_image(vars->mlx, vars->data->p_w);
 	mlx_destroy_image(vars->mlx, vars->data->e_0);
-	mlx_destroy_image(vars->mlx, vars->data->e_1);
-	mlx_destroy_image(vars->mlx, vars->data->e_2);
-	mlx_destroy_image(vars->mlx, vars->data->e_3);
-	mlx_destroy_image(vars->mlx, vars->data->e_4);
-	mlx_destroy_image(vars->mlx, vars->data->e_5);
-	mlx_destroy_image(vars->mlx, vars->data->e_6);
-	mlx_destroy_image(vars->mlx, vars->data->e_c);
 	if (vars->mlx)
 		mlx_destroy_display(vars->mlx);
 	free(vars->mlx);

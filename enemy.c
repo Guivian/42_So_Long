@@ -6,7 +6,7 @@
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 19:58:57 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/09/05 21:31:17 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/09/06 17:36:10 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	put_enemy(t_vars *vars, t_data *img)
 
 	y = 0;
 	vars->y = -1;
-	img->e_c = mlx_xpm_file_to_image(vars->mlx, E0, &img->w, &img->h);
+	img->e_0 = mlx_xpm_file_to_image(vars->mlx, E0, &img->w, &img->h);
 	while (vars->map[++vars->y])
 	{
 		vars->x = -1;
@@ -34,7 +34,7 @@ void	put_enemy(t_vars *vars, t_data *img)
 	}
 }
 
-void	open_enemy(t_vars *vars, t_data *img)
+/*void	open_enemy(t_vars *vars, t_data *img)
 {
 	img->e_0 = mlx_xpm_file_to_image(vars->mlx, E0, &img->w, &img->h);
 	img->e_1 = mlx_xpm_file_to_image(vars->mlx, E1, &img->w, &img->h);
@@ -66,4 +66,4 @@ int	animation(t_vars	*vars)
 	vars->frames++;
 	put_enemy(vars, vars->data);
 	return (1);
-}
+}*/
