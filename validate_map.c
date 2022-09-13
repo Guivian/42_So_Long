@@ -6,7 +6,7 @@
 /*   By: lbarbosa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 19:21:11 by lbarbosa          #+#    #+#             */
-/*   Updated: 2022/09/04 15:43:45 by lbarbosa         ###   ########.fr       */
+/*   Updated: 2022/09/13 14:21:18 by lbarbosa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int	validate_map(t_vars *vars)
 {
 	int	y;
 
+	if (vars->map[1] == NULL)
+		return (0);
 	y = -1;
 	while (vars->map[++y])
 	{
